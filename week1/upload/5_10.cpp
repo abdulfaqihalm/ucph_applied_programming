@@ -1,4 +1,5 @@
 #include "5_10.h"
+#include <cmath>
 #include <iostream>
 
 void guassian_elimination(double **A, double *b, double *u, int n){
@@ -6,18 +7,8 @@ void guassian_elimination(double **A, double *b, double *u, int n){
     double M_i; 
     double p_i;
     int n_p; 
-    for(int i=1; i<n; i++){
-        for(int j=i; j<n; j++){
-            M_i = A[j][i-1]/A[i-1][i-1];
-            for (int k=0; k<n; k++){
-                if(k>=i){
-                    A[j][k] = A[j][k] - M_i*A[i-1][k]; 
-                } else {
-                    A[j][k] = 0;
-                }
-            }
-            b[j] = b[j] - M_i*b[i-1];
-        }
+    for(int i=0; i<n; i++){
+        // Pivoting
         // Finding max switching row index
         // p_i is the maximum 
         p_i = A[i][i];
@@ -29,43 +20,31 @@ void guassian_elimination(double **A, double *b, double *u, int n){
             }
         }
 
-        // Construct Matrix P 
+        // Swapping 
         if(n_p!=i) {
-            // init P
-            double P[n][n];
+            std::cout << "Switch " << i << " with: " << n_p << "\n";
+            double temp_A [n];
             for(int k=0; k<n; k++){
-                for(int l=0; l<n; l++){
-                    if((k==l) && l!=i && l!=n_p){
-                        P[k][l] = 1;
-                    } else if(k==i && l==n_p){
-                        P[k][l] = 1;
-                    }else if(k==n_p && l==i){
-                        P[k][l] = 1;
-                    }
-                    else {
-                        P[k][l] = 0;
-                    }
+                temp_A[k] = A[i][k];
+                A[i][k] = A[n_p][k];
+                A[n_p][k] = temp_A[k];
+            }
+            double temp_b = b[i];
+            b[i] = b[n_p];
+            b[n_p] = temp_b;
+        }
+        
+        // Gaussian Elemination
+        for(int j=i+1; j<n; j++){
+            M_i = A[j][i]/A[i][i];
+            for (int k=0; k<n; k++){
+                if(k>=i){
+                    A[j][k] = A[j][k] - M_i*A[i][k]; 
+                } else {
+                    A[j][k] = 0;
                 }
             }
-
-            double A_new [n][n]; 
-            double b_new [n];
-            for(int k=0; k<n; k++){
-                b_new[k] = 0;
-                for(int l=0; l<n; l++){
-                    A_new[k][l] = 0;
-                    for(int m=0; m<n; m++){
-                        A_new[k][l] += P[k][m]*A[m][l];
-                    }
-                    b_new[k] += b[l]*P[k][l];
-                }
-            }
-            for(int k=0; k<n; k++){
-                for(int l=0; l<n; l++){
-                    A[k][l] = A_new[k][l];
-                }
-                b[k] = b_new[k];
-            }
+            b[j] = b[j] - M_i*b[i];
         }
     }
 

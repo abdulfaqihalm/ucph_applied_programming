@@ -1,9 +1,6 @@
 #include "5_6.h"
-#include <iostream>
 
 void Multiply(double **res, double **A, double **B, int ARows, int ACols, int BRows, int BCols){
-    assert(ACols == BRows);
-
     for(int i=0; i<ARows; i++){
         for(int j=0; j<BCols; j++){
             for(int k=0; k<BRows; k++){
@@ -13,19 +10,15 @@ void Multiply(double **res, double **A, double **B, int ARows, int ACols, int BR
     }
 }
 
-void Multiply(double *res, double *A, double **B, int ACols, int BRows, int BCols){
-    assert(ACols==BRows);
-    
-    for(int i=0; i<BRows; i++){
-        for(int k=0; k<BCols; k++){
+void Multiply(double *res, double *A, double **B, int ACols, int BRows, int BCols){  
+    for(int i=0; i<BCols; i++){
+        for(int k=0; k<ACols; k++){
             res[i] += A[k]*B[k][i];
         }
     }
 }
 
-void Multiply(double *res, double **A, double *B, int ARows, int ACols, int BRows){
-    assert(ACols==BRows);
-    
+void Multiply(double *res, double **A, double *B, int ARows, int ACols, int BRows){   
     for(int i=0; i<ARows; i++){
         for(int k=0; k<ACols; k++){
             res[i] += B[k]*A[i][k];
