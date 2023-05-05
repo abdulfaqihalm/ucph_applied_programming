@@ -39,6 +39,7 @@
 *.txt
 *.zip
 *.gzip
+.DS_Store
 
 # Vscode files
 *.vscode

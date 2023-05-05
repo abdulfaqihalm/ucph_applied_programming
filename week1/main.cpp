@@ -24,8 +24,8 @@ int main(int argc, char *argv[])
     // assert(n>1);
     // implicit_Euler(n);
 
-    /* // 5_3
-    double a = 1.0;
+    // 5_3
+    /* double a = 1.0;
     double b = 2.0; 
     std::cout << "a: " << a << " b: " << b << "\n";
     swap_pointer(&a,&b);
@@ -200,17 +200,17 @@ int main(int argc, char *argv[])
 
     // Pivot Test Case 
 
-    int n = 4; 
-    int A_rows = 4; 
-    int A_cols = 4; 
+    // int n = 4; 
+    // int A_rows = 4; 
+    // int A_cols = 4; 
     
-    // Define A 
-    double** A = new double*[A_rows];
-    for(int i=0; i<A_rows; i++){
-        A[i] = new double[A_cols];
-    }
-    // Define b 
-    double* b = new double[n];
+    // // Define A 
+    // double** A = new double*[A_rows];
+    // for(int i=0; i<A_rows; i++){
+    //     A[i] = new double[A_cols];
+    // }
+    // // Define b 
+    // double* b = new double[n];
 
     // Solution 1,2,3,4
     // A[0][0] = 2; A[0][1] = 4; A[0][2] = -2; A[0][3] = -2;
@@ -219,37 +219,37 @@ int main(int argc, char *argv[])
     // A[3][0] = -1; A[3][1] = 1; A[3][2] = 6; A[3][3] = -3;
     // b[0] = -4; b[1] = 5; b[2] = 7; b[3] = 7;
     // Solution 1,2,3,4
-    A[0][0] = 2; A[0][1] = 1; A[0][2] = 1; A[0][3] = 0;
-    A[1][0] = 4; A[1][1] = 3; A[1][2] = 3; A[1][3] = 1;
-    A[2][0] = 8; A[2][1] = 7; A[2][2] = 9; A[2][3] = 5;
-    A[3][0] = 6; A[3][1] = 7; A[3][2] = 9; A[3][3] = 8;
-    b[0] = 4; b[1] = 6; b[2] = 8; b[3] = -2;
+    // A[0][0] = 2; A[0][1] = 1; A[0][2] = 1; A[0][3] = 0;
+    // A[1][0] = 4; A[1][1] = 3; A[1][2] = 3; A[1][3] = 1;
+    // A[2][0] = 8; A[2][1] = 7; A[2][2] = 9; A[2][3] = 5;
+    // A[3][0] = 6; A[3][1] = 7; A[3][2] = 9; A[3][3] = 8;
+    // b[0] = 4; b[1] = 6; b[2] = 8; b[3] = -2;
 
-    // Define u 
-    double* u = new double[n];
+    // // Define u 
+    // double* u = new double[n];
  
-    /* solve3by3(A, b, u);
-    print_vector(u, 3); */
+    // /* solve3by3(A, b, u);
+    // print_vector(u, 3); */
 
-    std::cout << "Matrix A: " << "\n";
-    print_matrix(A,n,n);
-    std::cout << "Vector b: " << "\n";
-    print_vector(b, n);
-    guassian_elimination(A, b, u, n);
-    std::cout << "Matrix A_new: " << "\n";
-    print_matrix(A,n,n);
-    std::cout << "Vector b_new: " << "\n";
-    print_vector(b, n);
-    std::cout << "Vector u_new: " << "\n";
-    print_vector(u, n);
+    // std::cout << "Matrix A: " << "\n";
+    // print_matrix(A,n,n);
+    // std::cout << "Vector b: " << "\n";
+    // print_vector(b, n);
+    // guassian_elimination(A, b, u, n);
+    // std::cout << "Matrix A_new: " << "\n";
+    // print_matrix(A,n,n);
+    // std::cout << "Vector b_new: " << "\n";
+    // print_vector(b, n);
+    // std::cout << "Vector u_new: " << "\n";
+    // print_vector(u, n);
 
-    // Delete A, b, u
-    for(int i=0; i<A_rows; i++){
-        delete[] A[i];
-    }
-    delete[] A;
-    delete[] b;
-    delete[] u;
+    // // Delete A, b, u
+    // for(int i=0; i<A_rows; i++){
+    //     delete[] A[i];
+    // }
+    // delete[] A;
+    // delete[] b;
+    // delete[] u;
 
     return 0;
 

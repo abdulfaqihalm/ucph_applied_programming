@@ -23,15 +23,15 @@ void guassian_elimination(double **A, double *b, double *u, int n){
         // Swapping 
         if(n_p!=i) {
             std::cout << "Switch " << i << " with: " << n_p << "\n";
-            double temp_A [n];
+            double temp;
             for(int k=0; k<n; k++){
-                temp_A[k] = A[i][k];
+                temp = A[i][k];
                 A[i][k] = A[n_p][k];
-                A[n_p][k] = temp_A[k];
+                A[n_p][k] = temp;
             }
-            double temp_b = b[i];
+            temp = b[i];
             b[i] = b[n_p];
-            b[n_p] = temp_b;
+            b[n_p] = temp;
         }
         
         // Gaussian Elemination

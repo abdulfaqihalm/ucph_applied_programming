@@ -2,6 +2,8 @@
 #include "upload/ComplexNumber.hpp"
 #include "upload/CalculateExponential.hpp"
 #include "upload/Matrix2x2.hpp"
+#include "upload/PhdStudent.hpp"
+#include "upload/Exercise82.hpp"
 
 int main(int argc, char* argv[]){
     // 6.1.1-6
@@ -40,11 +42,25 @@ int main(int argc, char* argv[]){
 
     // 6.2 
     // clang++ -Wall -std=c++11 -O -g -o main.exe  main.cpp upload/Matrix2x2.cpp 
-    Matrix2x2 A(5, 2, -7, -3);
-    // 3 2 -7 -5
-    A = A.CalcInverse();
-    // 6 4 -14 -10
-    A.MultScalar(2);
+    // Matrix2x2 A(5, 2, -7, -3);
+    // // 3 2 -7 -5
+    // A = A.CalcInverse();
+    // // 6 4 -14 -10
+    // A.MultScalar(2);
+
+    //7.1 
+    // PhdStudent phd_stud("coba_phd", 200, 200, true);
+    // GraduateStudent grad_stud("coba_grad", 100, 100, false);
+    // Student stud("coba_student", 50, 50);
+    // std::cout << "undergrad name: " << stud.name << " tuition fees " << stud.tuition_fees << " library fine: " << stud.GetLibraryFines() << " Total owed: " << stud.MoneyOwed() << "\n";
+    // std::cout << "grad name: " << grad_stud.name << " tuition fees " << grad_stud.tuition_fees << " library fine: " << grad_stud.GetLibraryFines() << " Total owed: " << grad_stud.MoneyOwed() << " Full time: " << grad_stud.fullTime << "\n";
+    // std::cout << "grad name: " << phd_stud.name << " tuition fees " << phd_stud.tuition_fees << " library fine: " << phd_stud.GetLibraryFines() << " Total owed: " << phd_stud.MoneyOwed() << " Full time: " << phd_stud.fullTime <<  "\n";
+
+    double a = -1.0;
+    double b = 2.0; 
+    int c = -3; 
+    int d = 4; 
+    std::cout << CalcAbs(a) << CalcAbs(b) << CalcAbs(c) << CalcAbs(d);//
 
     return 0;
 }
