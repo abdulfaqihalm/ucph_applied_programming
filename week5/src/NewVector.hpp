@@ -1,0 +1,6 @@
+#ifndef NEWVECTORHEADERDEF
+#define NEWVECTORHEADERDEF
+
+
+
+#endif
