@@ -1,11 +1,12 @@
 #ifndef MATRIXHEADERDEF
 #define MATRIXHEADERDEF
-#include "Vector.hpp"
+#include "NewVector.hpp"
+#include <vector>
 
 template<typename T>
 class Matrix{
 private:
-	T** mData; // entries of matrix
+	std::vector<T> mData; // entries of matrix
 	int mNumRows, mNumCols; // dimensions
 
 public:
@@ -14,17 +15,14 @@ public:
     {
         mNumRows = otherMatrix.mNumRows;
         mNumCols = otherMatrix.mNumCols;
-        mData = new T* [mNumRows];
-
-        for (int i = 0; i < mNumRows; i++)
-        {
-            mData[i] = new T [mNumCols];
-        }
+        T nData = mNumRows * mNumCols;
+        mData.resize(nData); 
         for (int i = 0; i < mNumRows; i++)
         {
             for (int j = 0; j < mNumCols; j++)
             {
-                mData[i][j] = otherMatrix.mData[i][j];
+                int n = (mNumCols * i) + j; 
+               mData[n] = otherMatrix(i,j);
             }
         }
     }
@@ -36,28 +34,8 @@ public:
 
         mNumRows = numRows;
         mNumCols = numCols;
-        mData = new T* [mNumRows];
-
-        for (int i = 0; i < mNumRows; i++)
-        {
-            mData[i] = new T [mNumCols];
-        }
-        for (int i = 0; i < mNumRows; i++)
-        {
-            for (int j = 0; j < mNumCols; j++)
-            {
-                mData[i][j] = 0.0;
-            }
-        }
-    }
-
-	~Matrix()
-    {
-        for (int i = 0; i < mNumRows; i++)
-        {
-            delete[] mData[i];
-        }
-        delete[] mData;
+        T nData = mNumRows * mNumCols;
+        mData.resize(nData); 
     }
 
 	int GetNumberOfRows() const
@@ -77,7 +55,9 @@ public:
         assert(j >= 0);
         assert(j < mNumCols);
 
-        return mData[i][j];
+        int n = (mNumCols * i) + j; 
+
+        return mData[n];
     }
 
 	T const& operator()(int i, int j) const
@@ -87,7 +67,9 @@ public:
         assert(j >= 0);
         assert(j < mNumCols);
 
-        return mData[i][j];
+        int n = (mNumCols * i) + j; 
+
+        return mData[n];
     }
 
 	// overloaded assignment operator
@@ -100,7 +82,8 @@ public:
         {
             for (int j = 0; j < mNumCols; j++)
             {
-                mData[i][j] = otherMatrix.mData[i][j];
+                int n = (mNumCols * i) + j; 
+                mData[n] = otherMatrix.mData[n];
             }
         }
         return *this;
@@ -113,7 +96,8 @@ public:
         {
             for (int j = 0; j < mNumCols; j++)
             {
-                mat(i,j) = -mData[i][j];
+                int n = (mNumCols * i) + j; 
+                mat(i,j) = -mData[n];
             }
         }
         return mat;
@@ -129,7 +113,8 @@ public:
         {
             for (int j = 0; j < mNumCols; j++)
             {
-                mat(i,j) = mData[i][j] + m1.mData[i][j];
+                int n = (mNumCols * i) + j; 
+                mat(i,j) = mData[n] + m1.mData[n];
             }
         }
         return mat;
@@ -145,7 +130,8 @@ public:
         {
             for (int j = 0; j < mNumCols; j++)
             {
-                mat(i,j) = mData[i][j] - m1.mData[i][j];
+                int n = (mNumCols * i) + j; 
+                mat(i,j) = mData[n] - m1.mData[n];
             }
         }
         return mat;
@@ -159,10 +145,15 @@ public:
         {
             for (int j = 0; j < mNumCols; j++)
             {
-                mat(i,j) = a*mData[i][j];
+                int n = (mNumCols * i) + j; 
+                mat(i,j) = a*mData[n];
             }
         }
         return mat;
+    }
+
+    std::vector<T> const& getStorage(){
+        return &mData;
     }
 }; // class Matrix
 

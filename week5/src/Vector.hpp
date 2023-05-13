@@ -4,10 +4,10 @@
 #include <cassert>
 #include <cmath>
 
-class Vector
+template<typename T>class Vector
 {
 private:
-	double* mData; // data stored in vector
+	T* mData; // data stored in vector
 	int mSize; // size of vector
 
 public:
@@ -15,7 +15,7 @@ public:
   Vector(const Vector& otherVector)
     {
         mSize = otherVector.size();
-        mData = new double [mSize];
+        mData = new T [mSize];
         for (int i = 0; i < mSize; i++)
         {
             mData[i] = otherVector.mData[i];
@@ -27,10 +27,10 @@ public:
         assert(size > 0);
 
         mSize = size;
-        mData = new double [mSize];
+        mData = new T [mSize];
         for (int i = 0; i < mSize; i++)
         {
-            mData[i] = 0.0;
+            mData[i] = 0;
         }
     }
 
@@ -44,13 +44,13 @@ public:
         return mSize;
     }
 
-	double& operator[](int i)
+	T& operator[](int i)
     {
         assert(i >= 0 && i < mSize);
         return mData[i];
     }
 
-	double const& operator[] (int i)const
+	T const& operator[] (int i)const
     {
         assert(i >= 0 && i < mSize);
         return mData[i];

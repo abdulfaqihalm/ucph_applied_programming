@@ -20,12 +20,12 @@ int main( int argc, char *argv[] ) {
     return status;
 }
 bool suite_VectorTest_init = false;
-#include "/Users/faqih/Documents/UCPH/Applied Programming/week5/test/VectorTest.hpp"
+#include "/Users/faqih/Documents/UCPH/Applied Programming/week5/test/NewVectorTest.hpp"
 
 static VectorTest suite_VectorTest;
 
 static CxxTest::List Tests_VectorTest = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_VectorTest( "test/VectorTest.hpp", 4, "VectorTest", suite_VectorTest, Tests_VectorTest );
+CxxTest::StaticSuiteDescription suiteDescription_VectorTest( "test/NewVectorTest.hpp", 4, "VectorTest", suite_VectorTest, Tests_VectorTest );
 
 static class TestDescription_suite_VectorTest_TestCustomisedConstructor : public CxxTest::RealTestDescription {
 public:
@@ -93,72 +93,72 @@ public:
  void runTest() { suite_VectorTest.TestCalculateNorm(); }
 } testDescription_suite_VectorTest_TestCalculateNorm;
 
-#include "/Users/faqih/Documents/UCPH/Applied Programming/week5/test/MatrixTest.hpp"
+#include "/Users/faqih/Documents/UCPH/Applied Programming/week5/test/NewMatrixTest.hpp"
 
-static MatrixTest suite_MatrixTest;
+static NewMatrixTest suite_NewMatrixTest;
 
-static CxxTest::List Tests_MatrixTest = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_MatrixTest( "test/MatrixTest.hpp", 4, "MatrixTest", suite_MatrixTest, Tests_MatrixTest );
+static CxxTest::List Tests_NewMatrixTest = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_NewMatrixTest( "test/NewMatrixTest.hpp", 4, "NewMatrixTest", suite_NewMatrixTest, Tests_NewMatrixTest );
 
-static class TestDescription_suite_MatrixTest_TestGetNumRowAndCol : public CxxTest::RealTestDescription {
+static class TestDescription_suite_NewMatrixTest_TestGetNumRowAndCol : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_MatrixTest_TestGetNumRowAndCol() : CxxTest::RealTestDescription( Tests_MatrixTest, suiteDescription_MatrixTest, 7, "TestGetNumRowAndCol" ) {}
- void runTest() { suite_MatrixTest.TestGetNumRowAndCol(); }
-} testDescription_suite_MatrixTest_TestGetNumRowAndCol;
+ TestDescription_suite_NewMatrixTest_TestGetNumRowAndCol() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 7, "TestGetNumRowAndCol" ) {}
+ void runTest() { suite_NewMatrixTest.TestGetNumRowAndCol(); }
+} testDescription_suite_NewMatrixTest_TestGetNumRowAndCol;
 
-static class TestDescription_suite_MatrixTest_TestParenthesisOperator : public CxxTest::RealTestDescription {
+static class TestDescription_suite_NewMatrixTest_TestParenthesisOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_MatrixTest_TestParenthesisOperator() : CxxTest::RealTestDescription( Tests_MatrixTest, suiteDescription_MatrixTest, 14, "TestParenthesisOperator" ) {}
- void runTest() { suite_MatrixTest.TestParenthesisOperator(); }
-} testDescription_suite_MatrixTest_TestParenthesisOperator;
+ TestDescription_suite_NewMatrixTest_TestParenthesisOperator() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 14, "TestParenthesisOperator" ) {}
+ void runTest() { suite_NewMatrixTest.TestParenthesisOperator(); }
+} testDescription_suite_NewMatrixTest_TestParenthesisOperator;
 
-static class TestDescription_suite_MatrixTest_TestConstParenthesisOperator : public CxxTest::RealTestDescription {
+static class TestDescription_suite_NewMatrixTest_TestConstParenthesisOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_MatrixTest_TestConstParenthesisOperator() : CxxTest::RealTestDescription( Tests_MatrixTest, suiteDescription_MatrixTest, 24, "TestConstParenthesisOperator" ) {}
- void runTest() { suite_MatrixTest.TestConstParenthesisOperator(); }
-} testDescription_suite_MatrixTest_TestConstParenthesisOperator;
+ TestDescription_suite_NewMatrixTest_TestConstParenthesisOperator() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 24, "TestConstParenthesisOperator" ) {}
+ void runTest() { suite_NewMatrixTest.TestConstParenthesisOperator(); }
+} testDescription_suite_NewMatrixTest_TestConstParenthesisOperator;
 
-static class TestDescription_suite_MatrixTest_TestAssignmentOperator : public CxxTest::RealTestDescription {
+static class TestDescription_suite_NewMatrixTest_TestAssignmentOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_MatrixTest_TestAssignmentOperator() : CxxTest::RealTestDescription( Tests_MatrixTest, suiteDescription_MatrixTest, 34, "TestAssignmentOperator" ) {}
- void runTest() { suite_MatrixTest.TestAssignmentOperator(); }
-} testDescription_suite_MatrixTest_TestAssignmentOperator;
+ TestDescription_suite_NewMatrixTest_TestAssignmentOperator() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 34, "TestAssignmentOperator" ) {}
+ void runTest() { suite_NewMatrixTest.TestAssignmentOperator(); }
+} testDescription_suite_NewMatrixTest_TestAssignmentOperator;
 
-static class TestDescription_suite_MatrixTest_TestMinusUnaryOperator : public CxxTest::RealTestDescription {
+static class TestDescription_suite_NewMatrixTest_TestMinusUnaryOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_MatrixTest_TestMinusUnaryOperator() : CxxTest::RealTestDescription( Tests_MatrixTest, suiteDescription_MatrixTest, 52, "TestMinusUnaryOperator" ) {}
- void runTest() { suite_MatrixTest.TestMinusUnaryOperator(); }
-} testDescription_suite_MatrixTest_TestMinusUnaryOperator;
+ TestDescription_suite_NewMatrixTest_TestMinusUnaryOperator() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 52, "TestMinusUnaryOperator" ) {}
+ void runTest() { suite_NewMatrixTest.TestMinusUnaryOperator(); }
+} testDescription_suite_NewMatrixTest_TestMinusUnaryOperator;
 
-static class TestDescription_suite_MatrixTest_TestBinaryPlusOperator : public CxxTest::RealTestDescription {
+static class TestDescription_suite_NewMatrixTest_TestBinaryPlusOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_MatrixTest_TestBinaryPlusOperator() : CxxTest::RealTestDescription( Tests_MatrixTest, suiteDescription_MatrixTest, 69, "TestBinaryPlusOperator" ) {}
- void runTest() { suite_MatrixTest.TestBinaryPlusOperator(); }
-} testDescription_suite_MatrixTest_TestBinaryPlusOperator;
+ TestDescription_suite_NewMatrixTest_TestBinaryPlusOperator() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 69, "TestBinaryPlusOperator" ) {}
+ void runTest() { suite_NewMatrixTest.TestBinaryPlusOperator(); }
+} testDescription_suite_NewMatrixTest_TestBinaryPlusOperator;
 
-static class TestDescription_suite_MatrixTest_TestBinaryMinusOperator : public CxxTest::RealTestDescription {
+static class TestDescription_suite_NewMatrixTest_TestBinaryMinusOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_MatrixTest_TestBinaryMinusOperator() : CxxTest::RealTestDescription( Tests_MatrixTest, suiteDescription_MatrixTest, 86, "TestBinaryMinusOperator" ) {}
- void runTest() { suite_MatrixTest.TestBinaryMinusOperator(); }
-} testDescription_suite_MatrixTest_TestBinaryMinusOperator;
+ TestDescription_suite_NewMatrixTest_TestBinaryMinusOperator() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 86, "TestBinaryMinusOperator" ) {}
+ void runTest() { suite_NewMatrixTest.TestBinaryMinusOperator(); }
+} testDescription_suite_NewMatrixTest_TestBinaryMinusOperator;
 
-static class TestDescription_suite_MatrixTest_TestScalarMultiplyOperator : public CxxTest::RealTestDescription {
+static class TestDescription_suite_NewMatrixTest_TestScalarMultiplyOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_MatrixTest_TestScalarMultiplyOperator() : CxxTest::RealTestDescription( Tests_MatrixTest, suiteDescription_MatrixTest, 103, "TestScalarMultiplyOperator" ) {}
- void runTest() { suite_MatrixTest.TestScalarMultiplyOperator(); }
-} testDescription_suite_MatrixTest_TestScalarMultiplyOperator;
+ TestDescription_suite_NewMatrixTest_TestScalarMultiplyOperator() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 103, "TestScalarMultiplyOperator" ) {}
+ void runTest() { suite_NewMatrixTest.TestScalarMultiplyOperator(); }
+} testDescription_suite_NewMatrixTest_TestScalarMultiplyOperator;
 
-static class TestDescription_suite_MatrixTest_TestMatrixVectorMultiplyOperator : public CxxTest::RealTestDescription {
+static class TestDescription_suite_NewMatrixTest_TestMatrixVectorMultiplyOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_MatrixTest_TestMatrixVectorMultiplyOperator() : CxxTest::RealTestDescription( Tests_MatrixTest, suiteDescription_MatrixTest, 119, "TestMatrixVectorMultiplyOperator" ) {}
- void runTest() { suite_MatrixTest.TestMatrixVectorMultiplyOperator(); }
-} testDescription_suite_MatrixTest_TestMatrixVectorMultiplyOperator;
+ TestDescription_suite_NewMatrixTest_TestMatrixVectorMultiplyOperator() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 119, "TestMatrixVectorMultiplyOperator" ) {}
+ void runTest() { suite_NewMatrixTest.TestMatrixVectorMultiplyOperator(); }
+} testDescription_suite_NewMatrixTest_TestMatrixVectorMultiplyOperator;
 
-static class TestDescription_suite_MatrixTest_TestVectorMatrixMultiplyOperator : public CxxTest::RealTestDescription {
+static class TestDescription_suite_NewMatrixTest_TestVectorMatrixMultiplyOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_MatrixTest_TestVectorMatrixMultiplyOperator() : CxxTest::RealTestDescription( Tests_MatrixTest, suiteDescription_MatrixTest, 139, "TestVectorMatrixMultiplyOperator" ) {}
- void runTest() { suite_MatrixTest.TestVectorMatrixMultiplyOperator(); }
-} testDescription_suite_MatrixTest_TestVectorMatrixMultiplyOperator;
+ TestDescription_suite_NewMatrixTest_TestVectorMatrixMultiplyOperator() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 139, "TestVectorMatrixMultiplyOperator" ) {}
+ void runTest() { suite_NewMatrixTest.TestVectorMatrixMultiplyOperator(); }
+} testDescription_suite_NewMatrixTest_TestVectorMatrixMultiplyOperator;
 
 #include <cxxtest/Root.cpp>
 const char* CxxTest::RealWorldDescription::_worldName = "cxxtest";
