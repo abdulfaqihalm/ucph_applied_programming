@@ -1,5 +1,6 @@
 #include "../../cxxtest/TestSuite.h"
 #include "../src/Vector.hpp"
+#include "../include/ComplexNumber.cpp"
 
 class VectorTest: public CxxTest::TestSuite{
     public:
@@ -9,6 +10,15 @@ class VectorTest: public CxxTest::TestSuite{
             Vector<int> v(size);
             for(int i=0; i<size; i++){
                 TS_ASSERT_DELTA(0, v[i], 1.0e-16);
+            }
+        }
+
+        // complex
+        void TestCustomisedComplexNumModConstructor(void){
+            int size = 3;
+            Vector<ComplexNumber> v(size);
+            for(int i=0; i<size; i++){
+                TS_ASSERT_DELTA(0, v[i].CalculateModulus(), 1.0e-16);
             }
         }
 

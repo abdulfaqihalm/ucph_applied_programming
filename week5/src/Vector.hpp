@@ -1,132 +1,102 @@
 #ifndef VECTORHEADERDEF
 #define VECTORHEADERDEF
 
-#include <cassert>
+#include <vector>
 #include <cmath>
 
-template<typename T>class Vector
+template<typename T>
+class Vector
 {
-private:
-	T* mData; // data stored in vector
-	int mSize; // size of vector
+    private:
+        std::vector<T> mData; // data stored in vector
 
-public:
-    // copy constructor
-  Vector(const Vector& otherVector)
-    {
-        mSize = otherVector.size();
-        mData = new T [mSize];
-        for (int i = 0; i < mSize; i++)
+    public:
+        // Copy constructor is created by default.
+        Vector(int size)
         {
-            mData[i] = otherVector.mData[i];
+            mData.resize(size);
         }
-    }
 
-	Vector(int size)
-    {
-        assert(size > 0);
-
-        mSize = size;
-        mData = new T [mSize];
-        for (int i = 0; i < mSize; i++)
+        int size() const
         {
-            mData[i] = 0;
+            return mData.size();
         }
-    }
 
-	~Vector()
-    {
-        delete[] mData;
-    }
-
-	int size() const
-    {
-        return mSize;
-    }
-
-	T& operator[](int i)
-    {
-        assert(i >= 0 && i < mSize);
-        return mData[i];
-    }
-
-	T const& operator[] (int i)const
-    {
-        assert(i >= 0 && i < mSize);
-        return mData[i];
-    }
-
-	// assignment operator
-	Vector& operator=(const Vector& otherVector)
-    {
-        assert(mSize == otherVector.mSize);
-
-        for (int i = 0; i < mSize; i++)
+        T& operator[](int i)
         {
-            mData[i] = otherVector.mData[i];
+            return mData[i];
         }
-        return *this;
-    }
 
-    // overloading the unary - operator
-	Vector operator-() const
-    {
-        Vector v(mSize);
-        for (int i = 0; i < mSize; i++)
+        T const& operator[] (int i)const
         {
-            v[i] = -mData[i];
+            return mData[i];
         }
-        return v;
-    }
 
-    // overloading the binary + operator
-	Vector operator+(const Vector& v1) const
-    {
-        assert(mSize == v1.mSize);
+        // assignment operator is created by default.
 
-        Vector v(mSize);
-        for (int i = 0; i < mSize; i++)
+        // overloading the unary - operator
+        Vector operator-() const
         {
-            v[i] = mData[i] + v1.mData[i];
+            int mSize = mData.size();
+            Vector v(mSize);
+            for (int i = 0; i < mSize; i++)
+            {
+                v[i] = -mData[i];
+            }
+            return v;
         }
-        return v;
-    }
 
-    // overloading the binary - operator
-	Vector operator-(const Vector& v1) const
-    {
-        assert(mSize == v1.mSize);
-
-        Vector v(mSize);
-        for (int i = 0; i < mSize; i++)
+        // overloading the binary + operator
+        Vector operator+(const Vector& v1) const
         {
-            v[i] = mData[i] - v1.mData[i];
+            int mSize = mData.size();
+            Vector v(mSize);
+            for (int i = 0; i < mSize; i++)
+            {
+                v[i] = mData[i] + v1.mData[i];
+            }
+            return v;
         }
-        return v;
-    }
 
-	// scalar multiplication
-	Vector operator*(double a) const
-    {
-        Vector v(mSize);
-        for (int i = 0; i < mSize; i++)
+        // overloading the binary - operator
+        Vector operator-(const Vector& v1) const
         {
-            v[i] = a*mData[i];
+            int mSize = mData.size();
+            Vector v(mSize);
+            for (int i = 0; i < mSize; i++)
+            {
+                v[i] = mData[i] - v1.mData[i];
+            }
+            return v;
         }
-        return v;
-    }
 
-	// p-norm method
-	double CalculateNorm(int p = 2) const
-    {
-        double sum = 0.0;
-        for (int i = 0; i < mSize; i++)
+        // scalar multiplication
+        Vector operator*(double a) const
         {
-            sum += pow(std::abs(mData[i]), p);
+            int mSize = mData.size();
+            Vector v(mSize);
+            for (int i = 0; i < mSize; i++)
+            {
+                v[i] = a*mData[i];
+            }
+            return v;
         }
-        return pow(sum, 1.0 / ((double)(p)));
-    }
+
+        // p-norm method
+        double CalculateNorm(int p = 2) const
+        {
+            int mSize = mData.size();
+            double sum = 0.0;
+            for (int i = 0; i < mSize; i++)
+            {
+                sum += pow(std::abs(mData[i]), p);
+            }
+            return pow(sum, 1.0 / ((double)(p)));
+        }
+
+        std::vector<T> const& getStorage(){
+            return mData;
+        }
 };
-
 
 #endif

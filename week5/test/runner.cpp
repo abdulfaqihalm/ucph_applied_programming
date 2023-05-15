@@ -20,85 +20,91 @@ int main( int argc, char *argv[] ) {
     return status;
 }
 bool suite_VectorTest_init = false;
-#include "/Users/faqih/Documents/UCPH/Applied Programming/week5/test/NewVectorTest.hpp"
+#include "/Users/faqih/Documents/UCPH/Applied Programming/week5/test/VectorTest.hpp"
 
 static VectorTest suite_VectorTest;
 
 static CxxTest::List Tests_VectorTest = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_VectorTest( "test/NewVectorTest.hpp", 4, "VectorTest", suite_VectorTest, Tests_VectorTest );
+CxxTest::StaticSuiteDescription suiteDescription_VectorTest( "test/VectorTest.hpp", 5, "VectorTest", suite_VectorTest, Tests_VectorTest );
 
 static class TestDescription_suite_VectorTest_TestCustomisedConstructor : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestCustomisedConstructor() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 7, "TestCustomisedConstructor" ) {}
+ TestDescription_suite_VectorTest_TestCustomisedConstructor() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 8, "TestCustomisedConstructor" ) {}
  void runTest() { suite_VectorTest.TestCustomisedConstructor(); }
 } testDescription_suite_VectorTest_TestCustomisedConstructor;
 
+static class TestDescription_suite_VectorTest_TestCustomisedComplexNumModConstructor : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_VectorTest_TestCustomisedComplexNumModConstructor() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 17, "TestCustomisedComplexNumModConstructor" ) {}
+ void runTest() { suite_VectorTest.TestCustomisedComplexNumModConstructor(); }
+} testDescription_suite_VectorTest_TestCustomisedComplexNumModConstructor;
+
 static class TestDescription_suite_VectorTest_TestCopyConstructor : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestCopyConstructor() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 15, "TestCopyConstructor" ) {}
+ TestDescription_suite_VectorTest_TestCopyConstructor() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 25, "TestCopyConstructor" ) {}
  void runTest() { suite_VectorTest.TestCopyConstructor(); }
 } testDescription_suite_VectorTest_TestCopyConstructor;
 
 static class TestDescription_suite_VectorTest_TestSize : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestSize() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 29, "TestSize" ) {}
+ TestDescription_suite_VectorTest_TestSize() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 39, "TestSize" ) {}
  void runTest() { suite_VectorTest.TestSize(); }
 } testDescription_suite_VectorTest_TestSize;
 
 static class TestDescription_suite_VectorTest_TestBracketOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestBracketOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 35, "TestBracketOperator" ) {}
+ TestDescription_suite_VectorTest_TestBracketOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 45, "TestBracketOperator" ) {}
  void runTest() { suite_VectorTest.TestBracketOperator(); }
 } testDescription_suite_VectorTest_TestBracketOperator;
 
 static class TestDescription_suite_VectorTest_TestConstBracketOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestConstBracketOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 44, "TestConstBracketOperator" ) {}
+ TestDescription_suite_VectorTest_TestConstBracketOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 54, "TestConstBracketOperator" ) {}
  void runTest() { suite_VectorTest.TestConstBracketOperator(); }
 } testDescription_suite_VectorTest_TestConstBracketOperator;
 
 static class TestDescription_suite_VectorTest_TestAssignmentOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestAssignmentOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 49, "TestAssignmentOperator" ) {}
+ TestDescription_suite_VectorTest_TestAssignmentOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 59, "TestAssignmentOperator" ) {}
  void runTest() { suite_VectorTest.TestAssignmentOperator(); }
 } testDescription_suite_VectorTest_TestAssignmentOperator;
 
 static class TestDescription_suite_VectorTest_TestMinusUnaryOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestMinusUnaryOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 69, "TestMinusUnaryOperator" ) {}
+ TestDescription_suite_VectorTest_TestMinusUnaryOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 79, "TestMinusUnaryOperator" ) {}
  void runTest() { suite_VectorTest.TestMinusUnaryOperator(); }
 } testDescription_suite_VectorTest_TestMinusUnaryOperator;
 
 static class TestDescription_suite_VectorTest_TestBinaryPlusOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestBinaryPlusOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 82, "TestBinaryPlusOperator" ) {}
+ TestDescription_suite_VectorTest_TestBinaryPlusOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 92, "TestBinaryPlusOperator" ) {}
  void runTest() { suite_VectorTest.TestBinaryPlusOperator(); }
 } testDescription_suite_VectorTest_TestBinaryPlusOperator;
 
 static class TestDescription_suite_VectorTest_TestBinaryMinusOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestBinaryMinusOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 99, "TestBinaryMinusOperator" ) {}
+ TestDescription_suite_VectorTest_TestBinaryMinusOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 109, "TestBinaryMinusOperator" ) {}
  void runTest() { suite_VectorTest.TestBinaryMinusOperator(); }
 } testDescription_suite_VectorTest_TestBinaryMinusOperator;
 
 static class TestDescription_suite_VectorTest_TestScalarMultiplyOperator : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestScalarMultiplyOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 116, "TestScalarMultiplyOperator" ) {}
+ TestDescription_suite_VectorTest_TestScalarMultiplyOperator() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 126, "TestScalarMultiplyOperator" ) {}
  void runTest() { suite_VectorTest.TestScalarMultiplyOperator(); }
 } testDescription_suite_VectorTest_TestScalarMultiplyOperator;
 
 static class TestDescription_suite_VectorTest_TestCalculateNorm : public CxxTest::RealTestDescription {
 public:
- TestDescription_suite_VectorTest_TestCalculateNorm() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 131, "TestCalculateNorm" ) {}
+ TestDescription_suite_VectorTest_TestCalculateNorm() : CxxTest::RealTestDescription( Tests_VectorTest, suiteDescription_VectorTest, 141, "TestCalculateNorm" ) {}
  void runTest() { suite_VectorTest.TestCalculateNorm(); }
 } testDescription_suite_VectorTest_TestCalculateNorm;
 
-#include "/Users/faqih/Documents/UCPH/Applied Programming/week5/test/NewMatrixTest.hpp"
+#include "/Users/faqih/Documents/UCPH/Applied Programming/week5/test/MatrixTest.hpp"
 
 static NewMatrixTest suite_NewMatrixTest;
 
 static CxxTest::List Tests_NewMatrixTest = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_NewMatrixTest( "test/NewMatrixTest.hpp", 4, "NewMatrixTest", suite_NewMatrixTest, Tests_NewMatrixTest );
+CxxTest::StaticSuiteDescription suiteDescription_NewMatrixTest( "test/MatrixTest.hpp", 4, "NewMatrixTest", suite_NewMatrixTest, Tests_NewMatrixTest );
 
 static class TestDescription_suite_NewMatrixTest_TestGetNumRowAndCol : public CxxTest::RealTestDescription {
 public:
@@ -159,6 +165,55 @@ public:
  TestDescription_suite_NewMatrixTest_TestVectorMatrixMultiplyOperator() : CxxTest::RealTestDescription( Tests_NewMatrixTest, suiteDescription_NewMatrixTest, 139, "TestVectorMatrixMultiplyOperator" ) {}
  void runTest() { suite_NewMatrixTest.TestVectorMatrixMultiplyOperator(); }
 } testDescription_suite_NewMatrixTest_TestVectorMatrixMultiplyOperator;
+
+#include "/Users/faqih/Documents/UCPH/Applied Programming/week5/test/SparseVectorTest.hpp"
+
+static SparseVectorTest suite_SparseVectorTest;
+
+static CxxTest::List Tests_SparseVectorTest = { 0, 0 };
+CxxTest::StaticSuiteDescription suiteDescription_SparseVectorTest( "test/SparseVectorTest.hpp", 4, "SparseVectorTest", suite_SparseVectorTest, Tests_SparseVectorTest );
+
+static class TestDescription_suite_SparseVectorTest_TestConstructor : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_SparseVectorTest_TestConstructor() : CxxTest::RealTestDescription( Tests_SparseVectorTest, suiteDescription_SparseVectorTest, 6, "TestConstructor" ) {}
+ void runTest() { suite_SparseVectorTest.TestConstructor(); }
+} testDescription_suite_SparseVectorTest_TestConstructor;
+
+static class TestDescription_suite_SparseVectorTest_TestCustomConstructor : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_SparseVectorTest_TestCustomConstructor() : CxxTest::RealTestDescription( Tests_SparseVectorTest, suiteDescription_SparseVectorTest, 13, "TestCustomConstructor" ) {}
+ void runTest() { suite_SparseVectorTest.TestCustomConstructor(); }
+} testDescription_suite_SparseVectorTest_TestCustomConstructor;
+
+static class TestDescription_suite_SparseVectorTest_TestAssignment : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_SparseVectorTest_TestAssignment() : CxxTest::RealTestDescription( Tests_SparseVectorTest, suiteDescription_SparseVectorTest, 22, "TestAssignment" ) {}
+ void runTest() { suite_SparseVectorTest.TestAssignment(); }
+} testDescription_suite_SparseVectorTest_TestAssignment;
+
+static class TestDescription_suite_SparseVectorTest_TestSetGetValue : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_SparseVectorTest_TestSetGetValue() : CxxTest::RealTestDescription( Tests_SparseVectorTest, suiteDescription_SparseVectorTest, 33, "TestSetGetValue" ) {}
+ void runTest() { suite_SparseVectorTest.TestSetGetValue(); }
+} testDescription_suite_SparseVectorTest_TestSetGetValue;
+
+static class TestDescription_suite_SparseVectorTest_TestSizeAndNonZeroes : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_SparseVectorTest_TestSizeAndNonZeroes() : CxxTest::RealTestDescription( Tests_SparseVectorTest, suiteDescription_SparseVectorTest, 43, "TestSizeAndNonZeroes" ) {}
+ void runTest() { suite_SparseVectorTest.TestSizeAndNonZeroes(); }
+} testDescription_suite_SparseVectorTest_TestSizeAndNonZeroes;
+
+static class TestDescription_suite_SparseVectorTest_TestIndexNonZero : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_SparseVectorTest_TestIndexNonZero() : CxxTest::RealTestDescription( Tests_SparseVectorTest, suiteDescription_SparseVectorTest, 51, "TestIndexNonZero" ) {}
+ void runTest() { suite_SparseVectorTest.TestIndexNonZero(); }
+} testDescription_suite_SparseVectorTest_TestIndexNonZero;
+
+static class TestDescription_suite_SparseVectorTest_TestValueNonZero : public CxxTest::RealTestDescription {
+public:
+ TestDescription_suite_SparseVectorTest_TestValueNonZero() : CxxTest::RealTestDescription( Tests_SparseVectorTest, suiteDescription_SparseVectorTest, 59, "TestValueNonZero" ) {}
+ void runTest() { suite_SparseVectorTest.TestValueNonZero(); }
+} testDescription_suite_SparseVectorTest_TestValueNonZero;
 
 #include <cxxtest/Root.cpp>
 const char* CxxTest::RealWorldDescription::_worldName = "cxxtest";

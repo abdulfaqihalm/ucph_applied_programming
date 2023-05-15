@@ -1,7 +1,7 @@
 #include "../../cxxtest/TestSuite.h"
-#include "../src/NewMatrix.hpp"
+#include "../src/Matrix.hpp"
 
-class MatrixTest: public CxxTest::TestSuite{
+class NewMatrixTest: public CxxTest::TestSuite{
     public:
         // TO DO: Adding test cases for Matrices
         void TestGetNumRowAndCol(void){
