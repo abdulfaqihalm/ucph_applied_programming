@@ -8,16 +8,18 @@
 template<class T> class SparseVector{
 private:
 	//Add your data members here!
-	Vector<T> mData; 
+	int mDim; 
 	std::vector<unsigned int> mIndices; 
-	std::vector<unsigned int> mValues;  
+	std::vector<T> mValues;  
 public:
 	//creates an empty vector of dimensionality 0.
-	SparseVector(): mData(0){
+	SparseVector(){
+		mDim = 0;
 	}
 	// Creates a vector of dimensionality dim. It starts with 0 nonzero elements
 	// which need to be set using setValue
-	SparseVector(unsigned int dim): mData(dim){
+	SparseVector(unsigned int dim){
+		mDim = dim;
 	}
 
 	// assignment operators and copy constructor should be automatically
@@ -28,45 +30,34 @@ public:
 	void setValue(unsigned int index, T value){
 		auto lower = std::lower_bound(mIndices.begin(), mIndices.end(), index);
 		if(lower == mIndices.end()){
-			if(value!=0){
-				// Add only non-zero value
-				mIndices.push_back(index);
-				mValues.push_back(value);
-			} // Surely push it back!
-			Vector<T> v(mData.size());
-			v
-			.push_back(value);
-		}else {
-			mData[*lower] = value; 
-			mValues[std::distance(mIndices.begin(), lower)] = value;
-		}
-		
-		if(mIndices.capacity()==0){
+			// Bigger than any existing element
 			mIndices.push_back(index);
 			mValues.push_back(value);
-			mData[index] = value; 
-		} else{
-			if(mIndices.back() < index){
-				mIndices.push_back(index);
-				mValues.push_back(value);
-				mData[index] = value; 
-			}
+		}else if(*lower==index){
+			// Existing element
+			int dist = std::distance(mIndices.begin(), lower);
+			mValues[dist] = value;
+		}else {
+			// Insert element
+			int dist = std::distance(mIndices.begin(), lower);
+			mValues.insert(mValues.begin() + dist, value);
+			mIndices.insert(mIndices.begin() + dist, index);
 		}
 	}
 
 	//returns the value v_i of the vector. Returns 0 if the value is not stored
 	T getValue(unsigned int index) const{
 		auto lower = std::lower_bound(mIndices.begin(), mIndices.end(), index);
-		if(lower==mIndices.end()){
-			return 0.0;
-		}else {
-			return mData[index];
+		if(lower != mIndices.end() && *lower == index){
+			int dist = std::distance(mIndices.begin(), lower);
+			return mValues[dist];
 		}
+		return 0.0;
 	}
 
 	//returns the dimensionality of the vector
 	unsigned int size() const{
-		return mData.size();
+		return mDim;
 	}
 
 	// returns the number stored elements
@@ -84,17 +75,23 @@ public:
 
 	//adds x too the current vector
 	SparseVector<T>& operator+= (SparseVector<T> const& x){
-		unsigned int size_diff = x.size() - mData.size();
-		if(size_diff>0){
-			SparseVector result(mData.getStorage().size() + size_diff);
-			return result;
-		} else{
-			return x;
+		// Adding non-zero element of x 
+		for(int i=0; i<x.nonZeroes(); i++){
+			int index = x.indexNonZero(i);
+			T result = (*this).getValue(index) + x.valueNonZero(i);
+			(*this).setValue(index, result);
 		}
+		return *this;
 	}
 	//subtracts x from the current vector
 	SparseVector<T>& operator-= (SparseVector<T> const& x){
-		return x;
+		// Adding non-zero element of x 
+		for(int i=0; i<x.nonZeroes(); i++){
+			int index = x.indexNonZero(i);
+			T result = (*this).getValue(index) - x.valueNonZero(i);
+			(*this).setValue(index, result);
+		}
+		return *this;
 	}
 };
 
@@ -102,13 +99,17 @@ public:
 // computes z= x+y, equivalent to z=x, z+=y
 template<class T>
 SparseVector<T> operator+(SparseVector<T> const& x, SparseVector<T> const& y){
-	return x;
+	SparseVector<T> z(x);
+	z += y;
+	return z;
 }
 
 // computes z= x-y, equivalent to z=x, z-=y
 template<class T>
 SparseVector<T> operator-(SparseVector<T> const& x, SparseVector<T> const& y){
-	return x;
+	SparseVector<T> z(x);
+	z -= y;
+	return z;
 }
 
 
@@ -117,6 +118,14 @@ SparseVector<T> operator-(SparseVector<T> const& x, SparseVector<T> const& y){
 template<class T>
 Vector<T> operator* (Matrix<T> const& A, SparseVector<T> const& x){
 	Vector<T> result(A.GetNumberOfRows());
+	if (x.nonZeroes()>0){
+		for(int i=0; i<A.GetNumberOfRows(); i++){
+			for(int j=0; j<x.nonZeroes(); j++){
+				int j_prime = x.indexNonZero(j);
+				result[i] += A(i,j_prime)*x.getValue(j_prime);
+			}	
+		}
+	}
 	return result;
 }
 
@@ -125,8 +134,15 @@ Vector<T> operator* (Matrix<T> const& A, SparseVector<T> const& x){
 template<class T>
 Vector<T> operator* (SparseVector<T> const& x, Matrix<T> const& A){
 	Vector<T> result(A.GetNumberOfColumns());
+	if (x.nonZeroes()>0){
+		for(int i=0; i<A.GetNumberOfColumns(); i++){
+			for(int j=0; j<x.nonZeroes(); j++){
+				int j_prime = x.indexNonZero(j);
+				result[i] += x.getValue(j_prime)*A(j_prime,i);
+			}	
+		}
+	}
 	return result;
 }
-
 
 #endif
