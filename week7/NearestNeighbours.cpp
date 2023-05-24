@@ -1,8 +1,8 @@
 #include <iostream>
+#include <map>
 #include "armadillo.hpp"
 
-int main()
-{
+int main(int argc, char* argv[]){
     arma::mat dataX, dataXTest;
     arma::vec dataY;
     dataX.load("./data/dataX.dat");
@@ -32,18 +32,19 @@ int main()
         }
 
         distVectSortIndex = arma::sort_index(distVect); 
+        std::map<int, uint> neighbours;
         // 5-neighbours - hard coded
         for(int n=0; n<5; n++){
-            if (dataY(distVectSortIndex(n))==1){
-                sum_1 += 1;
-            }
-            else if (dataY(distVectSortIndex(n))==-1){
-                sum_min_1 += 1;
+            int neighbourClass = dataY(distVectSortIndex(n)); 
+            if(neighbours.count(neighbourClass)){
+                neighbours[neighbourClass] += 1;
+            } else {
+                neighbours[neighbourClass] = 0;
             }
         }
 
         // hard coded class
-        if (sum_1 > sum_min_1){
+        if (neighbours[1] > neighbours[-1]){
             dataYTest[i] = 1;
         } else {
             dataYTest[i] = -1;
